@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from aca_chart import generate_aca_chart
 
 app = FastAPI()
 
