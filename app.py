@@ -32,3 +32,10 @@ def aca_planner(data: ACARequest):
         "within_subsidy_range": within_range,
         "warning": warning
     }
+from fastapi.responses import FileResponse
+from aca_chart import generate_aca_chart
+
+@app.get("/generate_chart")
+def chart_endpoint(household_size: int = 3):
+    chart_path = generate_aca_chart(household_size)
+    return FileResponse(chart_path, media_type="image/png", filename=chart_path)
